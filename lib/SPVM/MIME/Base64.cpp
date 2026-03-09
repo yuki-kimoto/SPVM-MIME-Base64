@@ -63,7 +63,7 @@ int32_t SPVM__MIME__Base64__encode_base64(SPVM_ENV* env, SPVM_VALUE* stack) {
         int32_t chunk;
         uint32_t had_utf8;
         
-        void* obj_str = stack[0].oval;
+        SPVM_OBJ* obj_str = stack[0].oval;
         
         if (!obj_str) {
                 return env->die(env, stack, "$string must be defined", __func__, FILE_NAME, __LINE__);
@@ -73,7 +73,7 @@ int32_t SPVM__MIME__Base64__encode_base64(SPVM_ENV* env, SPVM_VALUE* stack) {
         str = (char*)env->get_chars(env, stack, obj_str);
         len = rlen;
         
-        void* obj_eol = stack[1].oval;
+        SPVM_OBJ* obj_eol = stack[1].oval;
 
         /* set up EOL from the second argument if present, default to "\n" */
         if (obj_eol) {
@@ -92,7 +92,7 @@ int32_t SPVM__MIME__Base64__encode_base64(SPVM_ENV* env, SPVM_VALUE* stack) {
         }
 
         /* allocate a result buffer */
-        void* obj_RETVAL = env->new_string(env, stack, NULL, rlen);
+        SPVM_OBJ* obj_RETVAL = env->new_string(env, stack, NULL, rlen);
         r = (char*)env->get_chars(env, stack, obj_RETVAL);
         
         /* encode */
@@ -147,7 +147,7 @@ int32_t SPVM__MIME__Base64__decode_base64(SPVM_ENV* env, SPVM_VALUE* stack) {
         char *r;
         unsigned char c[4];
         
-        void* obj_str = stack[0].oval;
+        SPVM_OBJ* obj_str = stack[0].oval;
         
         if (!obj_str) {
                 return env->die(env, stack, "$string must be defined", __func__, FILE_NAME, __LINE__);
@@ -157,7 +157,7 @@ int32_t SPVM__MIME__Base64__decode_base64(SPVM_ENV* env, SPVM_VALUE* stack) {
         str = (unsigned char*)env->get_chars(env, stack, obj_str);
         end = str + len;
         
-        void* obj_RETVAL;
+        SPVM_OBJ* obj_RETVAL;
         {
             /* always enough, but might be too much */
             int32_t rlen = len * 3 / 4;
@@ -212,13 +212,13 @@ int32_t SPVM__MIME__Base64__encoded_base64_length(SPVM_ENV* env, SPVM_VALUE* sta
         int32_t eollen; /* length of the EOL sequence */
         uint32_t had_utf8;
 
-        void* obj_str = stack[0].oval;
+        SPVM_OBJ* obj_str = stack[0].oval;
         
         if (!obj_str) {
           return env->die(env, stack, "$string must be defined", __func__, FILE_NAME, __LINE__);
         }
 
-        void* obj_eol = stack[1].oval;
+        SPVM_OBJ* obj_eol = stack[1].oval;
         
         if (obj_eol) {
             eollen = env->length(env, stack, obj_eol);
@@ -244,7 +244,7 @@ int32_t SPVM__MIME__Base64__decoded_base64_length(SPVM_ENV* env, SPVM_VALUE* sta
         unsigned char const* end;
         int32_t i = 0;
 
-        void* obj_str = stack[0].oval;
+        SPVM_OBJ* obj_str = stack[0].oval;
         
         if (!obj_str) {
                 return env->die(env, stack, "$string must be defined", __func__, FILE_NAME, __LINE__);

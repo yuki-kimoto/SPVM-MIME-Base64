@@ -37,7 +37,7 @@ int32_t SPVM__MIME__QuotedPrint__encode_qp(SPVM_ENV* env, SPVM_VALUE* stack) {
         int32_t p_len;
         uint32_t had_utf8;
 
-        void* obj_str = stack[0].oval;
+        SPVM_OBJ* obj_str = stack[0].oval;
         
         if (!obj_str) {
                 return env->die(env, stack, "$string must be defined", __func__, FILE_NAME, __LINE__);
@@ -46,7 +46,7 @@ int32_t SPVM__MIME__QuotedPrint__encode_qp(SPVM_ENV* env, SPVM_VALUE* stack) {
         beg = (char*)env->get_chars(env, stack, obj_str);
         sv_len = env->length(env, stack, obj_str);
         
-        void* obj_eol = stack[1].oval;
+        SPVM_OBJ* obj_eol = stack[1].oval;
         
         if (obj_eol) {
                 eol = env->get_chars(env, stack, obj_eol);
@@ -135,7 +135,7 @@ int32_t SPVM__MIME__QuotedPrint__encode_qp(SPVM_ENV* env, SPVM_VALUE* stack) {
             RETVAL.append(eol, eol_len);
         }
 
-        void* obj_RETVAL = env->new_string(env, stack, (const char*)RETVAL.c_str(), RETVAL.length());
+        SPVM_OBJ* obj_RETVAL = env->new_string(env, stack, (const char*)RETVAL.c_str(), RETVAL.length());
         
         stack[0].oval = obj_RETVAL;
         
@@ -145,7 +145,7 @@ int32_t SPVM__MIME__QuotedPrint__encode_qp(SPVM_ENV* env, SPVM_VALUE* stack) {
 
 int32_t SPVM__MIME__QuotedPrint__decode_qp(SPVM_ENV* env, SPVM_VALUE* stack) {
 
-        void* obj_str = stack[0].oval;
+        SPVM_OBJ* obj_str = stack[0].oval;
         
         if (!obj_str) {
                 return env->die(env, stack, "$string must be defined", __func__, FILE_NAME, __LINE__);
@@ -157,7 +157,7 @@ int32_t SPVM__MIME__QuotedPrint__decode_qp(SPVM_ENV* env, SPVM_VALUE* stack) {
         char *r;
         char *whitespace = 0;
 
-        void* obj_RETVAL = env->new_string(env, stack, NULL, len ? len : 1);
+        SPVM_OBJ* obj_RETVAL = env->new_string(env, stack, NULL, len ? len : 1);
         r = (char*)env->get_chars(env, stack, obj_RETVAL);
         while (str < end) {
             if (*str == ' ' || *str == '\t') {
