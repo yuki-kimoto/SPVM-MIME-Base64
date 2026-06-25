@@ -90,8 +90,8 @@ WriteMakefile(
     resources => {
       repository => {
         type => 'git',
-        url  => '',
-        web  => '',
+        url  => 'https://github.com/yuki-kimoto/SPVM-MIME-Base64.git',
+        web  => 'https://github.com/yuki-kimoto/SPVM-MIME-Base64',
       },
     },
     no_index => {
@@ -123,7 +123,8 @@ package MY {
       $options->{order_only_dependent_files} = ['pm_to_blib'];
       
       $options->{native_classes} = [
-        
+        "MIME::Base64",
+        "MIME::QuotedPrint",
       ];
       
       $options->{precompile_classes} = [
