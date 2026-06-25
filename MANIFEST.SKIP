@@ -15,7 +15,3 @@
 (^|/)\.tmp(/|$)
 (^|/)\.git(/|$)
 (^|/)\.spvm_build(/|$)
-
-# SPVM Specific
-^SPVM.c$
-^t/03_precompile(/|$)
