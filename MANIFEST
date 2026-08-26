@@ -8,11 +8,11 @@
 .github/workflows/windows-latest.yml
 .gitignore
 Changes
-lib/SPVM/MIME/Base64.config
+lib/SPVM/MIME/Base64.build
 lib/SPVM/MIME/Base64.cpp
 lib/SPVM/MIME/Base64.pm
 lib/SPVM/MIME/Base64.spvm
-lib/SPVM/MIME/QuotedPrint.config
+lib/SPVM/MIME/QuotedPrint.build
 lib/SPVM/MIME/QuotedPrint.cpp
 lib/SPVM/MIME/QuotedPrint.pm
 lib/SPVM/MIME/QuotedPrint.spvm

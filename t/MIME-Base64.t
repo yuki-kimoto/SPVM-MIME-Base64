@@ -1,14 +1,12 @@
 use strict;
 use warnings;
-use FindBin;
-use lib "$FindBin::Bin/lib";
+use lib "t/lib";
 
 use Test::More;
 
 use MIME::Base64;
 use SPVM 'TestCase::MIME::Base64';
 
-use SPVM 'Fn';
 use SPVM::MIME::Base64;
 use SPVM 'MIME::Base64';
 
@@ -44,10 +42,10 @@ my $start_memory_blocks_count = $api->get_memory_blocks_count;
 
 # Version
 {
-  is($SPVM::MIME::Base64::VERSION, SPVM::Fn->get_version_string('MIME::Base64'));
+  is($SPVM::MIME::Base64::VERSION, $api->get_version_string('MIME::Base64'));
 }
 
-SPVM::Fn->destroy_runtime_permanent_vars;
+$api->destroy_runtime_permanent_vars;
 
 my $end_memory_blocks_count = $api->get_memory_blocks_count;
 is($end_memory_blocks_count, $start_memory_blocks_count);
