@@ -8,7 +8,7 @@ SPVM::MIME::QuotedPrint - Quoted-Printable Encoding/Decoding
 
 =head1 Description
 
-MIME::QuotedPrint class in L<SPVM> has methods for Quoted-Printable encoding/decoding.
+MIME::QuotedPrint class in L<SPVM> provides for Quoted-Printable encoding/decoding.
 
 =head1 Usage
 

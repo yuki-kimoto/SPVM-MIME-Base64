@@ -1,6 +1,6 @@
 package SPVM::MIME::Base64;
 
-our $VERSION = "1.008";
+our $VERSION = "1.009";
 
 1;
 
@@ -10,7 +10,7 @@ SPVM::MIME::Base64 - Base64 Encoding/Decoding
 
 =head1 Description
 
-MIME::Base64 class in L<SPVM> has methods for L<Base64|https://en.wikipedia.org/wiki/Base64> encoding/decoding.
+MIME::Base64 class in L<SPVM> provides L<Base64|https://en.wikipedia.org/wiki/Base64> encoding/decoding.
 
 =head1 Usage
 
